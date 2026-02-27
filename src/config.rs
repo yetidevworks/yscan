@@ -110,6 +110,16 @@ impl Config {
         }
     }
 
+    pub fn save(&self) -> Result<()> {
+        let path = Self::config_path();
+        if let Some(parent) = path.parent() {
+            std::fs::create_dir_all(parent)?;
+        }
+        let contents = serde_yaml::to_string(self)?;
+        std::fs::write(&path, contents)?;
+        Ok(())
+    }
+
     pub fn config_path() -> PathBuf {
         dirs::config_dir()
             .unwrap_or_else(|| PathBuf::from("."))

@@ -219,6 +219,10 @@ impl App {
         let next = Theme::next_name(&self.theme_name);
         self.theme_name = next.to_string();
         self.theme = Theme::by_name(next);
+
+        // Persist to config
+        self.config.theme = next.to_string();
+        let _ = self.config.save();
     }
 
     // ── Device management ────────────────────────────────────────────

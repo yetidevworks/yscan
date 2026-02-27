@@ -18,18 +18,21 @@ async fn main() -> Result<()> {
     if let Some(ref iface) = cli.interface {
         config.network_interface = Some(iface.clone());
     }
+    if let Some(ref theme) = cli.theme {
+        config.theme = theme.clone();
+    }
 
-    let theme = &cli.theme;
+    let theme = config.theme.clone();
 
     match cli.command {
         Some(Command::Demo) => {
-            tui::run_demo_tui(config, theme).await?;
+            tui::run_demo_tui(config, &theme).await?;
         }
         Some(Command::Scan { json }) => {
             run_oneshot_scan(&config, json).await?;
         }
         None => {
-            tui::run_tui(config, theme).await?;
+            tui::run_tui(config, &theme).await?;
         }
     }
 

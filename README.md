@@ -23,7 +23,7 @@ A TUI-first network scanner that discovers devices on your local network using A
 - **Port scanning** — On-demand port scan for any device with 29 common ports
 - **Sort & filter** — Sort by any column, search across IP, name, MAC, and manufacturer
 - **Clipboard support** — Copy IP or MAC address with a single keystroke
-- **Multiple themes** — Dark (default), Light, Dracula, Nord — press `t` to cycle live in the TUI
+- **8 color themes** — Dark, Light, Dracula, Nord, One Dark, Monokai Pro, Tokyo Night, Synthwave — press `t` to cycle live, your choice is saved automatically
 - **Oneshot mode** — Single scan with table or JSON output for scripting
 - **Periodic rescans** — Continuous background scanning at configurable intervals
 
@@ -68,8 +68,8 @@ sudo yscan scan --json
 # Use a specific network interface
 sudo yscan -i en0
 
-# Start with a specific theme, or press 't' in the TUI to cycle
-yscan --theme dracula
+# Start with a specific theme, or press 't' in the TUI to cycle (auto-saved)
+yscan --theme tokyo-night
 ```
 
 > **Note:** `sudo` is recommended for ARP-based discovery. Without elevated privileges, ARP scanning is limited to devices already in the system's ARP cache. mDNS, SSDP, and hostname probing work without sudo.
@@ -114,7 +114,7 @@ Run `yscan` with no arguments to open the interactive dashboard:
 | `y` | Copy IP address to clipboard |
 | `Y` | Copy MAC address to clipboard |
 | `a` | Toggle activity log panel |
-| `t` | Cycle color theme (dark → light → dracula → nord) |
+| `t` | Cycle color theme (saved automatically) |
 | `r` | Trigger manual rescan |
 | `?` | Show help overlay |
 | `q` / `Esc` | Quit (or clear search filter) |
@@ -207,7 +207,7 @@ scan_interval: 30
 # Timeout per scan cycle in seconds (default: 10)
 scan_timeout: 10
 
-# Color theme: dark, light, dracula, nord
+# Color theme: dark, light, dracula, nord, onedark, monokai-pro, tokyo-night, synthwave
 theme: dark
 
 # Toggle individual scanners
@@ -244,7 +244,7 @@ Commands:
 
 Options:
   -i, --interface <INTERFACE>  Network interface (e.g., en0)
-      --theme <THEME>          Color theme: dark, light, dracula, nord [default: dark]
+      --theme <THEME>          Color theme [default: dark]
   -h, --help                   Print help
   -V, --version                Print version
 ```
@@ -267,8 +267,8 @@ sudo yscan -i eth0
 # Try the TUI with demo data (no network access needed)
 yscan demo
 
-# Nord theme
-yscan --theme nord
+# Synthwave theme
+yscan --theme synthwave
 ```
 
 ## License

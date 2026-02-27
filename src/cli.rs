@@ -7,9 +7,9 @@ pub struct Cli {
     #[arg(short = 'i', long)]
     pub interface: Option<String>,
 
-    /// Color theme (dark, light, dracula, nord)
-    #[arg(long, default_value = "dark")]
-    pub theme: String,
+    /// Color theme (dark, light, dracula, nord, onedark, monokai-pro, tokyo-night, synthwave)
+    #[arg(long)]
+    pub theme: Option<String>,
 
     #[command(subcommand)]
     pub command: Option<Command>,

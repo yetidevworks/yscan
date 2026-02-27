@@ -19,7 +19,16 @@ pub struct Theme {
 }
 
 /// Ordered list of available themes for cycling
-pub const THEME_NAMES: &[&str] = &["dark", "light", "dracula", "nord"];
+pub const THEME_NAMES: &[&str] = &[
+    "dark",
+    "light",
+    "dracula",
+    "nord",
+    "onedark",
+    "monokai-pro",
+    "tokyo-night",
+    "synthwave",
+];
 
 impl Theme {
     pub fn by_name(name: &str) -> Self {
@@ -27,6 +36,10 @@ impl Theme {
             "light" => Self::light(),
             "dracula" => Self::dracula(),
             "nord" => Self::nord(),
+            "onedark" => Self::onedark(),
+            "monokai-pro" => Self::monokai_pro(),
+            "tokyo-night" => Self::tokyo_night(),
+            "synthwave" => Self::synthwave(),
             _ => Self::dark(),
         }
     }
@@ -114,6 +127,86 @@ impl Theme {
             header_fg: Color::Rgb(143, 150, 163),
             title_fg: Color::Rgb(136, 192, 208),
             muted: Color::Rgb(107, 112, 127),
+        }
+    }
+
+    /// Atom One Dark palette
+    pub fn onedark() -> Self {
+        Self {
+            bg: Color::Rgb(40, 44, 52),
+            fg: Color::Rgb(171, 178, 191),
+            primary: Color::Rgb(97, 175, 239),
+            secondary: Color::Rgb(198, 120, 221),
+            accent: Color::Rgb(229, 192, 123),
+            success: Color::Rgb(152, 195, 121),
+            warning: Color::Rgb(229, 192, 123),
+            error: Color::Rgb(224, 108, 117),
+            border: Color::Rgb(62, 68, 81),
+            border_focused: Color::Rgb(97, 175, 239),
+            selection_bg: Color::Rgb(50, 56, 66),
+            header_fg: Color::Rgb(130, 137, 151),
+            title_fg: Color::Rgb(97, 175, 239),
+            muted: Color::Rgb(92, 99, 112),
+        }
+    }
+
+    /// Monokai Pro palette
+    pub fn monokai_pro() -> Self {
+        Self {
+            bg: Color::Rgb(45, 42, 46),
+            fg: Color::Rgb(252, 252, 250),
+            primary: Color::Rgb(120, 220, 232),
+            secondary: Color::Rgb(171, 157, 242),
+            accent: Color::Rgb(255, 216, 102),
+            success: Color::Rgb(169, 220, 118),
+            warning: Color::Rgb(255, 216, 102),
+            error: Color::Rgb(255, 97, 136),
+            border: Color::Rgb(73, 70, 75),
+            border_focused: Color::Rgb(120, 220, 232),
+            selection_bg: Color::Rgb(56, 53, 58),
+            header_fg: Color::Rgb(144, 140, 147),
+            title_fg: Color::Rgb(120, 220, 232),
+            muted: Color::Rgb(114, 111, 117),
+        }
+    }
+
+    /// Tokyo Night palette
+    pub fn tokyo_night() -> Self {
+        Self {
+            bg: Color::Rgb(26, 27, 38),
+            fg: Color::Rgb(169, 177, 214),
+            primary: Color::Rgb(122, 162, 247),
+            secondary: Color::Rgb(187, 154, 247),
+            accent: Color::Rgb(224, 175, 104),
+            success: Color::Rgb(158, 206, 106),
+            warning: Color::Rgb(224, 175, 104),
+            error: Color::Rgb(247, 118, 142),
+            border: Color::Rgb(41, 46, 66),
+            border_focused: Color::Rgb(122, 162, 247),
+            selection_bg: Color::Rgb(33, 35, 49),
+            header_fg: Color::Rgb(125, 131, 160),
+            title_fg: Color::Rgb(122, 162, 247),
+            muted: Color::Rgb(86, 95, 137),
+        }
+    }
+
+    /// Synthwave '84 palette
+    pub fn synthwave() -> Self {
+        Self {
+            bg: Color::Rgb(38, 25, 52),
+            fg: Color::Rgb(230, 225, 236),
+            primary: Color::Rgb(255, 110, 199),
+            secondary: Color::Rgb(114, 242, 249),
+            accent: Color::Rgb(254, 215, 102),
+            success: Color::Rgb(114, 242, 249),
+            warning: Color::Rgb(254, 215, 102),
+            error: Color::Rgb(254, 80, 96),
+            border: Color::Rgb(58, 42, 75),
+            border_focused: Color::Rgb(255, 110, 199),
+            selection_bg: Color::Rgb(48, 33, 65),
+            header_fg: Color::Rgb(148, 130, 168),
+            title_fg: Color::Rgb(255, 110, 199),
+            muted: Color::Rgb(118, 100, 138),
         }
     }
 }
