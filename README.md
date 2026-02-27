@@ -145,8 +145,8 @@ YScan uses multiple discovery protocols in parallel, then merges results by IP a
 │  │  sweep  │  │ browse  │  │ search  │  │  (reverse DNS +   │  │
 │  │         │  │         │  │         │  │   HTTP banners)   │  │
 │  └────┬────┘  └────┬────┘  └────┬────┘  └────────┬──────────┘  │
-│       │            │            │                 │            │
-│       └────────────┴────────────┴─────────────────┘            │
+│       │            │            │                │             │
+│       └────────────┴────────────┴────────────────┘             │
 │                            │                                   │
 │                    Merge by IP address                         │
 │                            │                                   │
