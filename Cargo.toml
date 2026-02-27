@@ -1,0 +1,33 @@
+[package]
+name = "yscan"
+version = "0.1.0"
+edition = "2021"
+description = "TUI-first network scanner with ARP, mDNS, and SSDP discovery"
+authors = ["YetiDevWorks"]
+license = "MIT"
+repository = "https://github.com/yetidevworks/yscan"
+readme = "README.md"
+keywords = ["network", "scanner", "tui", "arp", "mdns"]
+categories = ["command-line-utilities", "network-programming"]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+dirs = "6"
+anyhow = "1"
+ratatui = "0.30"
+crossterm = "0.29"
+libc = "0.2"
+chrono = { version = "0.4", features = ["serde"] }
+arboard = "3"
+ipnet = "2"
+local-ip-address = "0.6"
+mdns-sd = "0.12"
+ssdp-client = "2"
+nix = { version = "0.29", features = ["user"] }
+url = "2"
+futures-util = "0.3"
+dns-lookup = "2"
