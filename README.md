@@ -23,7 +23,7 @@ A TUI-first network scanner that discovers devices on your local network using A
 - **Port scanning** — On-demand port scan for any device with 29 common ports
 - **Sort & filter** — Sort by any column, search across IP, name, MAC, and manufacturer
 - **Clipboard support** — Copy IP or MAC address with a single keystroke
-- **Multiple themes** — Dark (default), Light, Dracula, Nord
+- **Multiple themes** — Dark (default), Light, Dracula, Nord — press `t` to cycle live in the TUI
 - **Oneshot mode** — Single scan with table or JSON output for scripting
 - **Periodic rescans** — Continuous background scanning at configurable intervals
 
@@ -68,7 +68,7 @@ sudo yscan scan --json
 # Use a specific network interface
 sudo yscan -i en0
 
-# Try different themes
+# Start with a specific theme, or press 't' in the TUI to cycle
 yscan --theme dracula
 ```
 
@@ -114,6 +114,7 @@ Run `yscan` with no arguments to open the interactive dashboard:
 | `y` | Copy IP address to clipboard |
 | `Y` | Copy MAC address to clipboard |
 | `a` | Toggle activity log panel |
+| `t` | Cycle color theme (dark → light → dracula → nord) |
 | `r` | Trigger manual rescan |
 | `?` | Show help overlay |
 | `q` / `Esc` | Quit (or clear search filter) |
