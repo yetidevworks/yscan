@@ -1,12 +1,13 @@
 # YScan
 
 ```
-  ___ ___ _______
- |   |   |_     _|.----.---.-.-----.
-  \     /  |   |  |   _|  _  |     |
-   |___|   |___|  |__| |___._|__|__|
-   Network discovery made easy!
-
+_____.___. _________                     
+\__  |   |/   _____/ ____ _____    ____  
+ /   |   |\_____  \_/ ___\\__  \  /    \ 
+ \____   |/        \  \___ / __ \|   |  \
+ / ______/_______  /\___  >____  /___|  /
+ \/              \/     \/     \/     \/ 
+      Network discovery made easy!
 ```
 
 A TUI-first network scanner that discovers devices on your local network using ARP, mDNS, SSDP, and hostname probing. See every device — named and identified — in a live, sortable, searchable dashboard.
@@ -78,24 +79,24 @@ yscan --theme dracula
 Run `yscan` with no arguments to open the interactive dashboard:
 
 ```
-┌─ YScan | 12 devices | 192.168.1.0/24 | elevated | ⠹ Scanning network... ──┐
-│                                                                             │
-│  IP Address       Name                    MAC Address        Manufacturer   │
-│  ─────────────────────────────────────────────────────────────────────────   │
-│  192.168.1.1      router.local            aa:bb:cc:dd:ee:ff  Ubiquiti       │
-│▸ 192.168.1.10     NAS.local               11:22:33:44:55:66  Synology       │
-│  192.168.1.20     Proxmox VE              77:88:99:aa:bb:cc  Intel          │
-│  192.168.1.30     Living Room TV           dd:ee:ff:00:11:22  Samsung        │
-│  192.168.1.45     pi-hole.local           33:44:55:66:77:88  Raspberry Pi   │
-│  192.168.1.100    -                       99:aa:bb:cc:dd:ee  Apple          │
-│                                                                             │
-├─ Activity ──────────────────────────────────────────────────────────────────┤
-│  10:30:15  Discovered router.local (192.168.1.1)                            │
-│  10:30:16  Discovered NAS.local (192.168.1.10)                              │
-│  10:30:17  Scan complete - 12 devices                                       │
-├─────────────────────────────────────────────────────────────────────────────┤
+┌─ YScan | 12 devices | 192.168.1.0/24 | elevated | ⠹ Scanning network... ───┐
+│                                                                            │
+│  IP Address       Name                    MAC Address        Manufacturer  │
+│  ───────────────────────────────────────────────────────────────────────── │
+│  192.168.1.1      router.local            aa:bb:cc:dd:ee:ff  Ubiquiti      │
+│▸ 192.168.1.10     NAS.local               11:22:33:44:55:66  Synology      │
+│  192.168.1.20     Proxmox VE              77:88:99:aa:bb:cc  Intel         │
+│  192.168.1.30     Living Room TV           dd:ee:ff:00:11:22  Samsung      │
+│  192.168.1.45     pi-hole.local           33:44:55:66:77:88  Raspberry Pi  │
+│  192.168.1.100    -                       99:aa:bb:cc:dd:ee  Apple         │
+│                                                                            │
+├─ Activity ─────────────────────────────────────────────────────────────────┤
+│  10:30:15  Discovered router.local (192.168.1.1)                           │
+│  10:30:16  Discovered NAS.local (192.168.1.10)                             │
+│  10:30:17  Scan complete - 12 devices                                      │
+├────────────────────────────────────────────────────────────────────────────┤
 │  [/]search [s]ort [p]ort scan [y]ank IP [a]ctivity [r]escan [?]help [q]uit │
-└─────────────────────────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Keyboard Shortcuts
