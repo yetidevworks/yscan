@@ -193,7 +193,7 @@ fn render_device_table(f: &mut Frame, app: &mut App, area: Rect) {
             let ip_style = if device.is_self {
                 Style::default().fg(theme.accent)
             } else {
-                Style::default().fg(theme.fg)
+                Style::default().fg(theme.secondary)
             };
 
             let name = device.display_name();
@@ -237,7 +237,7 @@ fn render_device_table(f: &mut Frame, app: &mut App, area: Rect) {
                     mfr_display.to_string(),
                     Style::default().fg(theme.secondary),
                 )),
-                Cell::from(Span::styled(last_seen, Style::default().fg(theme.muted))),
+                Cell::from(Span::styled(last_seen, Style::default().fg(theme.success))),
             ])
         })
         .collect();
