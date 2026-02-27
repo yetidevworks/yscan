@@ -28,12 +28,16 @@ fn send_result(ip: IpAddr, name: String, tx: &mpsc::UnboundedSender<Device>) {
     let _ = tx.send(device);
 }
 
-/// Try reverse DNS lookup via PTR record
+/// Try reverse DNS lookup via PTR record (with 2s timeout)
 async fn try_reverse_dns(ip: IpAddr) -> Option<String> {
-    let result = tokio::task::spawn_blocking(move || dns_lookup::lookup_addr(&ip))
-        .await
-        .ok()?
-        .ok()?;
+    let result = timeout(
+        Duration::from_secs(2),
+        tokio::task::spawn_blocking(move || dns_lookup::lookup_addr(&ip)),
+    )
+    .await
+    .ok()? // timeout
+    .ok()? // join
+    .ok()?; // lookup
 
     // Filter out results that are just the IP address echoed back
     let trimmed = result.trim().to_string();
@@ -44,16 +48,17 @@ async fn try_reverse_dns(ip: IpAddr) -> Option<String> {
     Some(trimmed)
 }
 
-/// Try HTTP banner detection on common ports
+/// Try HTTP banner detection on common ports — returns first hit
 async fn try_http_banner(ip: IpAddr) -> Option<String> {
-    let mut tasks = Vec::new();
+    let mut set = tokio::task::JoinSet::new();
 
     for &port in HTTP_PORTS {
-        tasks.push(tokio::spawn(async move { probe_http_port(ip, port).await }));
+        set.spawn(async move { probe_http_port(ip, port).await });
     }
 
-    for task in tasks {
-        if let Ok(Some(name)) = task.await {
+    while let Some(result) = set.join_next().await {
+        if let Ok(Some(name)) = result {
+            set.abort_all();
             return Some(name);
         }
     }
