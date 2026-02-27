@@ -10,6 +10,8 @@ _____.___. _________
       Network discovery made easy!
 ```
 
+![YScan Screenshot](yscan-screenshot.png)
+
 A TUI-first network scanner that discovers devices on your local network using ARP, mDNS, SSDP, and hostname probing. See every device — named and identified — in a live, sortable, searchable dashboard.
 
 **Supported Platforms:** macOS and Linux
