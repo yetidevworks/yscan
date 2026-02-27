@@ -26,7 +26,7 @@ use theme::Theme;
 /// Run the TUI with live network scanning
 pub async fn run_tui(config: Config, theme_name: &str) -> Result<()> {
     let theme = Theme::by_name(theme_name);
-    let mut app = App::new(config.clone(), theme, false);
+    let mut app = App::new(config.clone(), theme_name, theme, false);
 
     // Set up channels
     let (event_tx, event_rx) = mpsc::unbounded_channel::<ScanEvent>();
@@ -48,7 +48,7 @@ pub async fn run_tui(config: Config, theme_name: &str) -> Result<()> {
 /// Run the TUI with synthetic demo data (no network scanning)
 pub async fn run_demo_tui(config: Config, theme_name: &str) -> Result<()> {
     let theme = Theme::by_name(theme_name);
-    let mut app = App::new(config, theme, true);
+    let mut app = App::new(config, theme_name, theme, true);
 
     // Load demo devices
     let demo_devices = demo::generate_demo_devices();
@@ -233,6 +233,9 @@ fn handle_table_keys(app: &mut App, key: KeyCode, cmd_tx: &mpsc::UnboundedSender
         KeyCode::Char('Y') => copy_mac(app),
         KeyCode::Char('a') => {
             app.show_activity = !app.show_activity;
+        }
+        KeyCode::Char('t') => {
+            app.cycle_theme();
         }
         KeyCode::Char('?') => {
             app.input_mode = InputMode::Help;

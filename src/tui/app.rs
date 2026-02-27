@@ -158,6 +158,7 @@ pub struct App {
     pub log_scroll: usize,
 
     // UI
+    pub theme_name: String,
     pub theme: Theme,
     pub should_quit: bool,
     pub status_message: Option<String>,
@@ -173,7 +174,7 @@ pub struct App {
 }
 
 impl App {
-    pub fn new(config: Config, theme: Theme, is_demo: bool) -> Self {
+    pub fn new(config: Config, theme_name: &str, theme: Theme, is_demo: bool) -> Self {
         let is_elevated = crate::net::util::is_elevated();
         let mut app = Self {
             devices: BTreeMap::new(),
@@ -193,6 +194,7 @@ impl App {
             port_scan_target: None,
             activity_log: VecDeque::new(),
             log_scroll: 0,
+            theme_name: theme_name.to_string(),
             theme,
             should_quit: false,
             status_message: None,
@@ -209,6 +211,14 @@ impl App {
             }
         }
         app
+    }
+
+    // ── Theme ─────────────────────────────────────────────────────────
+
+    pub fn cycle_theme(&mut self) {
+        let next = Theme::next_name(&self.theme_name);
+        self.theme_name = next.to_string();
+        self.theme = Theme::by_name(next);
     }
 
     // ── Device management ────────────────────────────────────────────

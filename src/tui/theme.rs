@@ -18,6 +18,9 @@ pub struct Theme {
     pub muted: Color,
 }
 
+/// Ordered list of available themes for cycling
+pub const THEME_NAMES: &[&str] = &["dark", "light", "dracula", "nord"];
+
 impl Theme {
     pub fn by_name(name: &str) -> Self {
         match name {
@@ -26,6 +29,12 @@ impl Theme {
             "nord" => Self::nord(),
             _ => Self::dark(),
         }
+    }
+
+    /// Return the next theme name in the cycle
+    pub fn next_name(current: &str) -> &'static str {
+        let idx = THEME_NAMES.iter().position(|&n| n == current).unwrap_or(0);
+        THEME_NAMES[(idx + 1) % THEME_NAMES.len()]
     }
 
     /// Catppuccin Mocha inspired

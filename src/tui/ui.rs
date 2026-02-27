@@ -114,6 +114,13 @@ fn render_title_bar(f: &mut Frame, app: &App, area: Rect) {
         spans.push(Span::styled("elevated", Style::default().fg(theme.warning)));
     }
 
+    // Theme indicator
+    spans.push(Span::styled(" | ", Style::default().fg(theme.muted)));
+    spans.push(Span::styled(
+        &app.theme_name,
+        Style::default().fg(theme.secondary),
+    ));
+
     // Scanning status / spinner
     if let Some(spinner_text) = app.spinner.display() {
         spans.push(Span::styled(" | ", Style::default().fg(theme.muted)));
@@ -512,6 +519,7 @@ fn render_footer(f: &mut Frame, app: &App, area: Rect) {
             ("s/S", "sort"),
             ("r", "rescan"),
             ("a", "activity"),
+            ("t", "theme"),
             ("y/Y", "copy IP/MAC"),
             ("?", "help"),
             ("q", "quit"),
@@ -691,6 +699,8 @@ fn render_help_overlay(f: &mut Frame, app: &App) {
         Line::from(""),
         section("Other"),
         Line::from(""),
+        binding("a", "Toggle activity log", theme),
+        binding("t", "Cycle color theme", theme),
         binding("?", "Toggle this help", theme),
         binding("Ctrl+C", "Quit immediately", theme),
         Line::from(""),
