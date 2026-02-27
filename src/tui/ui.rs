@@ -191,9 +191,11 @@ fn render_device_table(f: &mut Frame, app: &mut App, area: Rect) {
             let device = app.devices.get(ip).unwrap();
 
             let ip_style = if device.is_self {
-                Style::default().fg(theme.accent)
+                Style::default()
+                    .fg(theme.accent)
+                    .add_modifier(Modifier::BOLD)
             } else {
-                Style::default().fg(theme.secondary)
+                Style::default().fg(theme.accent)
             };
 
             let name = device.display_name();
