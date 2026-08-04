@@ -6,6 +6,7 @@ description = "TUI-first network scanner with ARP, mDNS, and SSDP discovery"
 authors = ["YetiDevWorks"]
 license = "Apache-2.0"
 repository = "https://github.com/yetidevworks/yscan"
+homepage = "https://github.com/yetidevworks/yscan"
 readme = "README.md"
 keywords = ["network", "scanner", "tui", "arp", "mdns"]
 categories = ["command-line-utilities", "network-programming"]
