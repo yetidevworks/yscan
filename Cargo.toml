@@ -1,6 +1,6 @@
 [package]
 name = "yscan"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "TUI-first network scanner with ARP, mDNS, and SSDP discovery"
 authors = ["YetiDevWorks"]

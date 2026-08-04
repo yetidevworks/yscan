@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - '[0-9]*'
 
 env:
   CARGO_TERM_COLOR: always
@@ -240,7 +240,7 @@ jobs:
             "class Yscan < Formula" \
             "  desc \"TUI-first network scanner with ARP, mDNS, SSDP, and hostname discovery\"" \
             "  homepage \"https://github.com/${GITHUB_REPOSITORY}\"" \
-            "  license \"MIT\"" \
+            "  license \"Apache-2.0\"" \
             "  version \"${VER}\"" \
             "" \
             "  on_macos do" \
