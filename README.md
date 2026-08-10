@@ -55,6 +55,15 @@ cargo install --path .
 
 Download from [GitHub Releases](https://github.com/yetidevworks/yscan/releases).
 
+### Nixpkgs
+
+For Nix or NixOS is a [pre-packed module](https://search.nixos.org/packages?channel=unstable&query=yscan)
+available. The latest release is usually present in the `unstable` channel.
+
+```bash
+nix-env -iA nixos.yscan
+```
+
 ## Quick Start
 
 ```bash
